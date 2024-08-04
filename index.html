@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Res Arcana Helper</title>
+
+    <style>
+        ul {
+            list-style: none;
+        }
+        .dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px 2px 0;
+        }
+        .sun {
+            background-color: #DDAA00;
+        }
+        .moon {
+            background-color: #224488;
+        }
+        .extension {
+            color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+<script src="script.js"></script>
+
+<h1>Lieux de Pouvoir</h1>
+
+<!--TODO Explication-->
+
+<form id="placesForm">
+    <h2>Extensions</h2>
+    <div>
+        <input type="checkbox" checked id="ext1" name="ext1">
+        <label for="ext1">Extension 1 Lux et Tenebrae</label>
+    </div>
+    <div>
+        <input type="checkbox" checked id="ext2" name="ext2">
+        <label for="ext2">Extension 2 Perlae Imperii</label>
+    </div>
+
+    <h2>Nombre de joueurs</h2>
+    <div>
+        <label for="players"></label>
+        <select id="players" name="players">
+            <option value="2">2 joueurs (4 lieux de puissance)</option>
+            <option value="3">3 joueurs (5 lieux de puissance)</option>
+            <option value="4">4 joueurs (6 lieux de puissance)</option>
+            <option value="5" id="5p">5 joueurs (7 lieux de puissance)</option>
+        </select>
+    </div>
+
+    <!--<h2>Lieux exclus</h2>--><!--TODO-->
+
+    <br>
+    <br>
+    <div>
+        <input type="submit" value="Choisir mes lieux de pouvoir">
+    </div>
+</form>
+
+<h2>Lieux sélectionnés</h2>
+<div id="placesList">
+    Cliquez sur le bouton pour sélectionner vos Lieux de Pouvoir !
+</div>
+
+<!--<h2>Règles Maison</h2>--><!--TODO-->
+
+</body>
+</html>
