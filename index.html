@@ -24,6 +24,17 @@
         .extension {
             color: rgba(0, 0, 0, 0.8);
         }
+        .error {
+            color: red;
+            background-color: lightpink;
+            border: 1px solid red;
+            border-radius: 10px;
+            padding: 1rem;
+
+            width: fit-content;
+            margin: 0.5rem 0 0.5rem 0;
+        }
+        /*TODO center all*/
     </style>
 </head>
 <body>
@@ -36,6 +47,10 @@
 <form id="placesForm">
     <h2>Extensions</h2>
     <div>
+        <input type="checkbox" checked id="ext0" name="ext0">
+        <label for="ext0">Jeu de base</label>
+    </div>
+    <div>
         <input type="checkbox" checked id="ext1" name="ext1">
         <label for="ext1">Extension 1 Lux et Tenebrae</label>
     </div>
@@ -43,14 +58,18 @@
         <input type="checkbox" checked id="ext2" name="ext2">
         <label for="ext2">Extension 2 Perlae Imperii</label>
     </div>
+    <div>
+        <input type="checkbox" id="ext3" name="ext3">
+        <label for="ext3">Res Arcana Duo</label>
+    </div>
 
     <h2>Nombre de joueurs</h2>
     <div>
         <label for="players"></label>
         <select id="players" name="players">
-            <option value="2">2 joueurs (4 lieux de puissance)</option>
-            <option value="3">3 joueurs (5 lieux de puissance)</option>
-            <option value="4">4 joueurs (6 lieux de puissance)</option>
+            <option value="2" id="2p">2 joueurs (4 lieux de puissance)</option>
+            <option value="3" id="3p">3 joueurs (5 lieux de puissance)</option>
+            <option value="4" id="4p">4 joueurs (6 lieux de puissance)</option>
             <option value="5" id="5p">5 joueurs (7 lieux de puissance)</option>
         </select>
     </div>
@@ -60,7 +79,10 @@
     <br>
     <br>
     <div>
-        <input type="submit" value="Choisir mes lieux de pouvoir">
+        <div id="errorMessageNoBaseGame" class="error" hidden>
+            Sélectionnez au moins le jeu de base ou l'extension Duo pour pouvoir choisir des lieux de pouvoirs
+        </div>
+        <input id="submit" type="submit" value="Choisir mes lieux de pouvoir">
     </div>
 </form>
 
