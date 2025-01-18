@@ -19,28 +19,28 @@
 * */
 
 const places = [
-  {name: "Bosquet Sacré",          opposite: 1, sunSide: true, extension: undefined},
-  {name: "Tour de l'Alchimiste",   opposite: 0, sunSide: false, extension: undefined},
-  {name: "Catacombes de la Mort",  opposite: 3, sunSide: true, extension: undefined},
-  {name: "Puits Sacrificiel",      opposite: 2, sunSide: false, extension: undefined},
-  {name: "Forge Maudite",          opposite: 5, sunSide: true, extension: undefined},
-  {name: "Mine des Nains",         opposite: 4, sunSide: false, extension: undefined},
-  {name: "Manoir de Corail",       opposite: 7, sunSide: true, extension: undefined},
-  {name: "Récif des Naufrageurs",  opposite: 6, sunSide: false, extension: undefined},
-  {name: "Repaire des Dragons",    opposite: 9, sunSide: true, extension: undefined},
-  {name: "Bestiaire du Sorcier",   opposite: 8, sunSide: false, extension: undefined},
-  {name: "Antre du Dragon",        opposite: 11, sunSide: true, extension: 'Lux et Tenebrae'},
-  {name: "Forteresse de Cristal",  opposite: 10, sunSide: false, extension: 'Lux et Tenebrae'},
-  {name: "Temple des Abysses",     opposite: 13, sunSide: true, extension: 'Lux et Tenebrae'},
-  {name: "Porte des Enfers",       opposite: 12, sunSide: false, extension: 'Lux et Tenebrae'},
-  {name: "Île Sanguinaire",        opposite: 15, sunSide: true, extension: 'Perlae Imperii'},
-  {name: "Berceau de Perles",      opposite: 14, sunSide: false, extension: 'Perlae Imperii'},
-  {name: "Ménagerie Mystique",     opposite: 17, sunSide: true, extension: 'Perlae Imperii'},
-  {name: "Laboratoire Alchimique", opposite: 16, sunSide: false, extension: 'Perlae Imperii'},
-  {name: "Grande Forge Naine",     opposite: 19, sunSide: true, extension: 'Duo'},
-  {name: "Cœur des bois Elfiques", opposite: 18, sunSide: false, extension: 'Duo'},
-  {name: "Mégalithes Sacrés",      opposite: 21, sunSide: true, extension: 'Duo'},
-  {name: "Tanière de Dragon",      opposite: 20, sunSide: false, extension: 'Duo'},
+  {name: "Bosquet Sacré",          index: 0,opposite: 1, sunSide: true, extension: undefined},
+  {name: "Tour de l'Alchimiste",   index: 1,opposite: 0, sunSide: false, extension: undefined},
+  {name: "Catacombes de la Mort",  index: 2,opposite: 3, sunSide: true, extension: undefined},
+  {name: "Puits Sacrificiel",      index: 3,opposite: 2, sunSide: false, extension: undefined},
+  {name: "Forge Maudite",          index: 4,opposite: 5, sunSide: true, extension: undefined},
+  {name: "Mine des Nains",         index: 5,opposite: 4, sunSide: false, extension: undefined},
+  {name: "Manoir de Corail",       index: 6,opposite: 7, sunSide: true, extension: undefined},
+  {name: "Récif des Naufrageurs",  index: 7,opposite: 6, sunSide: false, extension: undefined},
+  {name: "Repaire des Dragons",    index: 8,opposite: 9, sunSide: true, extension: undefined},
+  {name: "Bestiaire du Sorcier",   index: 9,opposite: 8, sunSide: false, extension: undefined},
+  {name: "Antre du Dragon",        index: 10,opposite: 11, sunSide: true, extension: 'Lux et Tenebrae'},
+  {name: "Forteresse de Cristal",  index: 11,opposite: 10, sunSide: false, extension: 'Lux et Tenebrae'},
+  {name: "Temple des Abysses",     index: 12,opposite: 13, sunSide: true, extension: 'Lux et Tenebrae'},
+  {name: "Porte des Enfers",       index: 13,opposite: 12, sunSide: false, extension: 'Lux et Tenebrae'},
+  {name: "Île Sanguinaire",        index: 14,opposite: 15, sunSide: true, extension: 'Perlae Imperii'},
+  {name: "Berceau de Perles",      index: 15,opposite: 14, sunSide: false, extension: 'Perlae Imperii'},
+  {name: "Ménagerie Mystique",     index: 16,opposite: 17, sunSide: true, extension: 'Perlae Imperii'},
+  {name: "Laboratoire Alchimique", index: 17,opposite: 16, sunSide: false, extension: 'Perlae Imperii'},
+  {name: "Grande Forge Naine",     index: 18,opposite: 19, sunSide: true, extension: 'Duo'},
+  {name: "Cœur des bois Elfiques", index: 19,opposite: 18, sunSide: false, extension: 'Duo'},
+  {name: "Mégalithes Sacrés",      index: 20,opposite: 21, sunSide: true, extension: 'Duo'},
+  {name: "Tanière de Dragon",      index: 21,opposite: 20, sunSide: false, extension: 'Duo'},
 ];
 
 const basePlaces = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         removeValue(possiblePlaces, picks[picks.length - 1].opposite);
       }
     }
-    return picks;
+    return picks.sort(comparePlaces);
   }
 
   function getRandomInt(max) {
@@ -221,6 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Could not find item', value, 'in array', array);
     } else {
       array.splice(i, 1);
+    }
+  }
+
+  function comparePlaces(a, b) {
+    if (a.sunSide === b.sunSide) {
+      return a.index - b.index;
+    } else if(a.sunSide) {
+      return -1;
+    } else {
+      return 1;
     }
   }
 
